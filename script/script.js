@@ -24,13 +24,21 @@
 		scaleR = d3.scale.sqrt().range([5, 30]);
 
 //Set up Axis Generator
+
+    //SIQI: this is a formatting function
+    //https://github.com/mbostock/d3/wiki/Formatting#d3_format
+    var myFormattingFunction = d3.format(',.0f');
+
 	var axisX = d3.svg.axis()
 		.orient('bottom')
 		.tickSize(-height, 0)
+        .tickValues([1000,5000,10000])//SIQI: this is how you arbitrarily specify tick values
+        .tickFormat( myFormattingFunction)//SIQI: this is how you manually format tick values; @param myFormattingFunction is a function
 		.scale(scaleX);
 	var axisY = d3.svg.axis()
 		.orient('left')
 		.tickSize (-width,0)
+        .tickValues([1,5,10,20])
 		.scale (scaleY);
 
 //Acquire data
