@@ -1,8 +1,8 @@
 //Don't forget to start a simple http server
 //python -m http.server
 
-//THINGS LEFT TO DO
-		//fix x-axis to spread out values more
+//https://github.com/mbostock/d3/wiki/Formatting#d3_format
+
 		
 
 //Set up Canvas
@@ -25,20 +25,20 @@
 
 //Set up Axis Generator
 
-    //SIQI: this is a formatting function
-    //https://github.com/mbostock/d3/wiki/Formatting#d3_format
-    var myFormattingFunction = d3.format(',.0f');
+    
+    var myFormattingFunction = d3.format(',.0');
 
 	var axisX = d3.svg.axis()
 		.orient('bottom')
 		.tickSize(-height, 0)
-        .tickValues([1000,5000,10000])//SIQI: this is how you arbitrarily specify tick values
-        .tickFormat( myFormattingFunction)//SIQI: this is how you manually format tick values; @param myFormattingFunction is a function
+        .tickValues([1000,2500,5000,10000,15000,20000,30000,50000,70000,100000])
+        .tickFormat( myFormattingFunction)
 		.scale(scaleX);
 	var axisY = d3.svg.axis()
 		.orient('left')
 		.tickSize (-width,0)
-        .tickValues([1,5,10,20])
+        .tickValues([.05,.1,.25,.5,1,2.5,5,10,20])
+        .tickFormat( myFormattingFunction)
 		.scale (scaleY);
 
 //Acquire data
